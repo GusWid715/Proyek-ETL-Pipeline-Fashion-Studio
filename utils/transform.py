@@ -53,14 +53,3 @@ def transform_data(df):
     except Exception as e:
         logging.error(f"Terjadi kesalahan saat proses transformasi: {e}")
         raise 
-
-# Blok pengujian lokal
-if __name__ == "__main__":
-    from extract import extract_data
-    
-    df_raw = extract_data()
-    if not df_raw.empty:
-        df_hasil_bersih = transform_data(df_raw)
-        print("\n--- 5 Data Pertama Setelah Transformasi ---")
-        print(df_hasil_bersih.head())
-        print(f"\nTotal Baris Unik & Bersih: {len(df_hasil_bersih)}")

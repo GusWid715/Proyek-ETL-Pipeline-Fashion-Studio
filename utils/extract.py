@@ -90,11 +90,3 @@ def extract_data(base_url="https://fashion-studio.dicoding.dev"):
     logging.info(f"Proses ekstraksi selesai. Total data terkumpul: {len(raw_data)} dari target 1000.")
     
     return pd.DataFrame(raw_data)
-
-if __name__ == "__main__":
-    # Blok pengujian lokal
-    df_hasil = extract_data()
-    print("\n--- 5 Data Pertama ---")
-    print(df_hasil.head())
-    print("\n--- Info Data ---")
-    print(df_hasil.info())

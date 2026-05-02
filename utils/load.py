@@ -61,19 +61,3 @@ def load_to_gsheets(df, spreadsheet_id="1JeoMs4DYsd3Q52fFPAcpggBIo528KsHpavGRkQv
     except Exception as e:
         logging.error(f"Gagal menyimpan data ke Google Sheets: {e}")
         raise
-
-# Blok pengujian lokal
-if __name__ == "__main__":
-    # Mengimpor modul extract dan transform untuk mendapatkan data bersih
-    from extract import extract_data
-    from transform import transform_data
-    
-    print("Menjalankan pipeline mini untuk testing load...")
-    df_raw = extract_data()
-    if not df_raw.empty:
-        df_clean = transform_data(df_raw)
-        
-        # Jalankan ketiga fungsi load
-        load_to_csv(df_clean)
-        load_to_postgres(df_clean)
-        load_to_gsheets(df_clean)
