@@ -14,7 +14,11 @@ def extract_data(base_url="https://fashion-studio.dicoding.dev"):
     raw_data = []
     
     for page in range(1, 51):
-        url = f"{base_url}?page={page}" 
+        # Perbaikan URL agar sesuai dengan arsitektur web target
+        if page == 1:
+            url = f"{base_url}/"
+        else:
+            url = f"{base_url}/page{page}" 
         
         try:
             headers = {
