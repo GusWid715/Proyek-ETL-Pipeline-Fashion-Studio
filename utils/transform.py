@@ -1,3 +1,4 @@
+from numpy import float64, int64
 import pandas as pd
 from datetime import datetime
 import logging
@@ -25,14 +26,14 @@ def transform_data(df):
         # Hapus simbol $ dan tanda koma (,), lalu konversi ke float dan kalikan 16.000
         df_clean['Price'] = df_clean['Price'].str.replace('$', '', regex=False)
         df_clean['Price'] = df_clean['Price'].str.replace(',', '', regex=False)
-        df_clean['Price'] = df_clean['Price'].astype(float) * 16000
+        df_clean['Price'] = df_clean['Price'].astype(float64) * 16000
 
         # 4. Transformasi Kolom 'Rating'
         # Karena format dipastikan selalu desimal (misal 4.0 / 5)
-        df_clean['Rating'] = df_clean['Rating'].str.extract(r'(\d+\.\d+)')[0].astype(float)
+        df_clean['Rating'] = df_clean['Rating'].str.extract(r'(\d+\.\d+)')[0].astype(float64)
 
         # 5. Transformasi Kolom 'Colors'
-        df_clean['Colors'] = df_clean['Colors'].str.extract(r'(\d+)')[0].astype(int)
+        df_clean['Colors'] = df_clean['Colors'].str.extract(r'(\d+)')[0].astype(int64)
 
         # 6. Transformasi Kolom 'Size' dan 'Gender'
         df_clean['Size'] = df_clean['Size'].str.replace('Size:', '', regex=False).str.strip()
